@@ -60,6 +60,7 @@ namespace databaseproject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(loginform::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->tbemail = (gcnew System::Windows::Forms::TextBox());
@@ -141,7 +142,7 @@ namespace databaseproject {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(15, 33);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
+			this->BackColor = System::Drawing::SystemColors::AppWorkspace;
 			this->ClientSize = System::Drawing::Size(604, 451);
 			this->Controls->Add(this->btncancel);
 			this->Controls->Add(this->btnok);
@@ -152,9 +153,10 @@ namespace databaseproject {
 			this->Controls->Add(this->label1);
 			this->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(6);
 			this->Name = L"loginform";
-			this->Text = L"welcome to library ";
+			this->Text = L"welcome to our library ";
 			this->Load += gcnew System::EventHandler(this, &loginform::loginform_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
