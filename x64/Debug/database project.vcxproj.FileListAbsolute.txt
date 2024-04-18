@@ -1,0 +1,4 @@
+D:\vscode\database project\x64\Debug\database project.vcxproj.AssemblyReference.cache
+D:\vscode\database project\x64\Debug\databaseproject.loginform.resources
+D:\vscode\database project\x64\Debug\database project.vcxproj.GenerateResource.cache
+D:\vscode\database project\x64\Debug\database project.exe
