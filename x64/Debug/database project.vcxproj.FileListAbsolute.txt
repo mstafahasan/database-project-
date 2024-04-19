@@ -2,3 +2,5 @@ D:\vscode\database project\x64\Debug\database project.vcxproj.AssemblyReference.
 D:\vscode\database project\x64\Debug\databaseproject.loginform.resources
 D:\vscode\database project\x64\Debug\database project.vcxproj.GenerateResource.cache
 D:\vscode\database project\x64\Debug\database project.exe
+D:\vscode\database project\x64\Debug\databaseproject.MainForm.resources
+D:\vscode\database project\x64\Debug\databaseproject.RegisterForm.resources

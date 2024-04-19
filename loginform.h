@@ -44,6 +44,7 @@ namespace databaseproject {
 	private: System::Windows::Forms::TextBox^ tbpassword;
 	private: System::Windows::Forms::Button^ btnok;
 	private: System::Windows::Forms::Button^ btncancel;
+	private: System::Windows::Forms::LinkLabel^ llRegister;
 
 	protected:
 
@@ -68,6 +69,7 @@ namespace databaseproject {
 			this->tbpassword = (gcnew System::Windows::Forms::TextBox());
 			this->btnok = (gcnew System::Windows::Forms::Button());
 			this->btncancel = (gcnew System::Windows::Forms::Button());
+			this->llRegister = (gcnew System::Windows::Forms::LinkLabel());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -120,7 +122,7 @@ namespace databaseproject {
 			// 
 			// btnok
 			// 
-			this->btnok->Location = System::Drawing::Point(183, 390);
+			this->btnok->Location = System::Drawing::Point(174, 367);
 			this->btnok->Name = L"btnok";
 			this->btnok->Size = System::Drawing::Size(114, 42);
 			this->btnok->TabIndex = 5;
@@ -130,7 +132,7 @@ namespace databaseproject {
 			// 
 			// btncancel
 			// 
-			this->btncancel->Location = System::Drawing::Point(412, 390);
+			this->btncancel->Location = System::Drawing::Point(412, 367);
 			this->btncancel->Name = L"btncancel";
 			this->btncancel->Size = System::Drawing::Size(131, 42);
 			this->btncancel->TabIndex = 6;
@@ -138,12 +140,24 @@ namespace databaseproject {
 			this->btncancel->UseVisualStyleBackColor = true;
 			this->btncancel->Click += gcnew System::EventHandler(this, &loginform::btncancel_Click);
 			// 
+			// llRegister
+			// 
+			this->llRegister->AutoSize = true;
+			this->llRegister->Location = System::Drawing::Point(246, 433);
+			this->llRegister->Name = L"llRegister";
+			this->llRegister->Size = System::Drawing::Size(401, 34);
+			this->llRegister->TabIndex = 7;
+			this->llRegister->TabStop = true;
+			this->llRegister->Text = L"don\'t have account create one \r\n";
+			this->llRegister->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &loginform::llRegister_LinkClicked);
+			// 
 			// loginform
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(15, 33);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::AppWorkspace;
-			this->ClientSize = System::Drawing::Size(604, 451);
+			this->ClientSize = System::Drawing::Size(650, 476);
+			this->Controls->Add(this->llRegister);
 			this->Controls->Add(this->btncancel);
 			this->Controls->Add(this->btnok);
 			this->Controls->Add(this->tbpassword);
@@ -219,6 +233,11 @@ private: System::Void btnok_Click(System::Object^ sender, System::EventArgs^ e) 
 	
 }
 private: System::Void loginform_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+	   public: bool switchToRegister = false;
+private: System::Void llRegister_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	this->switchToRegister = true;
+	this->Close();
 }
 };
 }

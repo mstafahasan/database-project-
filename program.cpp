@@ -1,4 +1,5 @@
 #include "loginform.h"
+#include"RegisterForm.h"
 using namespace System;
 using namespace System::Windows::Forms;
 
@@ -6,9 +7,30 @@ void main(array<String^>^ args)
 {
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
-    databaseproject::loginform loginForm;
-    loginForm.ShowDialog();
-    User^ user = loginForm.user;
+    User^ user = nullptr;
+    
+    while (true) {
+        databaseproject::loginform loginForm;
+        loginForm.ShowDialog();
+
+        if (loginForm.switchToRegister) {
+            //show the register form
+            databaseproject::RegisterForm registerForm;
+            registerForm.ShowDialog();
+            if (registerForm.switchToLogin) {
+                continue;
+            }
+            else {
+                user = registerForm.user;
+                break;
+            }
+        }
+        else {
+            user = loginForm.user;
+            break;
+        }
+    }
+
 
     if (user != nullptr) {
         MessageBox::Show("Successful Authentication Of" +user->name, "program.cpp", MessageBoxButtons::OK);
