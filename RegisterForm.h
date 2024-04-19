@@ -78,6 +78,7 @@ namespace databaseproject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(RegisterForm::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->tbName = (gcnew System::Windows::Forms::TextBox());
@@ -98,12 +99,14 @@ namespace databaseproject {
 			// 
 			// label1
 			// 
+			this->label1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
 			this->label1->Font = (gcnew System::Drawing::Font(L"Tahoma", 22.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(-609, -52);
+			this->label1->Location = System::Drawing::Point(-547, -47);
 			this->label1->Margin = System::Windows::Forms::Padding(6, 0, 6, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(1843, 151);
+			this->label1->Size = System::Drawing::Size(1807, 151);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Register";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -256,7 +259,7 @@ namespace databaseproject {
 			this->AutoScaleDimensions = System::Drawing::SizeF(15, 33);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
-			this->ClientSize = System::Drawing::Size(809, 552);
+			this->ClientSize = System::Drawing::Size(773, 552);
 			this->Controls->Add(this->llLogin);
 			this->Controls->Add(this->btnCancel);
 			this->Controls->Add(this->btnOK);
@@ -276,6 +279,7 @@ namespace databaseproject {
 			this->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Margin = System::Windows::Forms::Padding(6);
 			this->Name = L"RegisterForm";
 			this->RightToLeft = System::Windows::Forms::RightToLeft::No;

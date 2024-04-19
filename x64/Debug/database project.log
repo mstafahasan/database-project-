@@ -1,7 +1,8 @@
-﻿  loginform.cpp
-  program.cpp
+﻿  MainForm.cpp
   RegisterForm.cpp
-D:\vscode\database project\program.cpp(7,1): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
+  loginform.cpp
+  program.cpp
   Generating Code...
+D:\vscode\database project\program.cpp(8,1): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
   loginform.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   database project.vcxproj -> D:\vscode\database project\x64\Debug\database project.exe

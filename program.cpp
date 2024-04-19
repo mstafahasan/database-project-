@@ -1,5 +1,6 @@
 #include "loginform.h"
 #include"RegisterForm.h"
+#include"MainForm.h"
 using namespace System;
 using namespace System::Windows::Forms;
 
@@ -33,7 +34,10 @@ void main(array<String^>^ args)
 
 
     if (user != nullptr) {
-        MessageBox::Show("Successful Authentication Of" +user->name, "program.cpp", MessageBoxButtons::OK);
+
+        databaseproject::MainForm mainform(user);
+        Application::Run(% mainform);
+
     }
     else {
         MessageBox::Show("Authentication Cancelled", "program.cpp", MessageBoxButtons::OK);

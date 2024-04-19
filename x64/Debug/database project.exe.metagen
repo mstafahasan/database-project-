@@ -33,7 +33,7 @@ Class databaseproject.loginform: AutoLayout, AnsiClass, Class, Public, BeforeFie
     Boolean switchToRegister : Public
 Class databaseproject.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(User): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
 Class databaseproject.RegisterForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
