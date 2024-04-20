@@ -1,6 +1,7 @@
 #include "loginform.h"
 #include"RegisterForm.h"
 #include"MainForm.h"
+#include"LoginLibrarianForm.h"
 using namespace System;
 using namespace System::Windows::Forms;
 
@@ -9,6 +10,9 @@ void main(array<String^>^ args)
     Application::EnableVisualStyles();
     Application::SetCompatibleTextRenderingDefault(false);
     User^ user = nullptr;
+    librarian^ Librarian = nullptr;
+
+
     
     while (true) {
         databaseproject::loginform loginForm;
@@ -27,8 +31,16 @@ void main(array<String^>^ args)
             }
         }
         else {
-            user = loginForm.user;
-            break;
+            if (loginForm.switchToLoginlibririan) {
+                databaseproject::LoginLibrarianForm loginlibrarianForm;
+                loginlibrarianForm.ShowDialog();
+                Librarian = loginlibrarianForm.Librarian;
+                break;
+            }
+            else {
+                user = loginForm.user;
+                break;
+            }
         }
     }
 
@@ -39,6 +51,12 @@ void main(array<String^>^ args)
         Application::Run(% mainform);
 
     }
+    if (Librarian != nullptr) {
+        MessageBox::Show("seccefully authentication of librarian", "program.cpp", MessageBoxButtons::OK);
+
+    }
+
+
     else {
         MessageBox::Show("Authentication Cancelled", "program.cpp", MessageBoxButtons::OK);
     }

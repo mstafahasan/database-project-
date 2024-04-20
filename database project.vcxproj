@@ -123,12 +123,17 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="loginform.cpp" />
+    <ClCompile Include="LoginLibrarianForm.cpp" />
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="program.cpp" />
     <ClCompile Include="RegisterForm.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="librarian.h" />
     <ClInclude Include="loginform.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="LoginLibrarianForm.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="MainForm.h">
@@ -142,6 +147,9 @@
   <ItemGroup>
     <EmbeddedResource Include="loginform.resx">
       <DependentUpon>loginform.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginLibrarianForm.resx">
+      <DependentUpon>LoginLibrarianForm.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.h</DependentUpon>

@@ -1,4 +1,5 @@
   databaseproject.loginform.resources - Embedded, ContainedInManifestFile, 
+  databaseproject.LoginLibrarianForm.resources - Embedded, ContainedInManifestFile, 
   databaseproject.MainForm.resources - Embedded, ContainedInManifestFile, 
   databaseproject.RegisterForm.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
@@ -31,6 +32,27 @@ Class databaseproject.loginform: AutoLayout, AnsiClass, Class, Public, BeforeFie
   Fields:
     User user : Public
     Boolean switchToRegister : Public
+    Boolean switchToLoginlibririan : Public
+Class librarian: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 id : Public
+    System.String name : Public
+    System.String email : Public
+    System.String phone : Public
+    System.String address : Public
+    System.String password : Public
+    System.String salary : Public
+    System.String sex : Public
+    System.String hiredate : Public
+    System.String country : Public
+    System.String city : Public
+    System.String street : Public
+Class databaseproject.LoginLibrarianForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    librarian Librarian : Public
 Class databaseproject.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(User): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

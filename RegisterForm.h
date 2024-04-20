@@ -342,13 +342,15 @@ private: System::Void btnOK_Click(System::Object^ sender, System::EventArgs^ e) 
 		command.Parameters->AddWithValue("@password", Password);
 
 		command.ExecuteNonQuery();
-		user = gcnew User;
-		user->name = name;
-		user->email = email;
-		user->phone = phone;
-		user->address = address;
-		user->password = Password;
-		this->Close();
+		
+			user = gcnew User;
+			user->name = name;
+			user->email = email;
+			user->phone = phone;
+			user->address = address;
+			user->password = Password;
+			this->Close();
+		
 
 
 	}

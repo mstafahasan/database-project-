@@ -45,6 +45,8 @@ namespace databaseproject {
 	private: System::Windows::Forms::Button^ btnok;
 	private: System::Windows::Forms::Button^ btncancel;
 	private: System::Windows::Forms::LinkLabel^ llRegister;
+	private: System::Windows::Forms::LinkLabel^ llloginlibrarian;
+
 
 	protected:
 
@@ -70,6 +72,7 @@ namespace databaseproject {
 			this->btnok = (gcnew System::Windows::Forms::Button());
 			this->btncancel = (gcnew System::Windows::Forms::Button());
 			this->llRegister = (gcnew System::Windows::Forms::LinkLabel());
+			this->llloginlibrarian = (gcnew System::Windows::Forms::LinkLabel());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -151,12 +154,25 @@ namespace databaseproject {
 			this->llRegister->Text = L"don\'t have account create one \r\n";
 			this->llRegister->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &loginform::llRegister_LinkClicked);
 			// 
+			// llloginlibrarian
+			// 
+			this->llloginlibrarian->AutoSize = true;
+			this->llloginlibrarian->LinkColor = System::Drawing::Color::Black;
+			this->llloginlibrarian->Location = System::Drawing::Point(-2, 433);
+			this->llloginlibrarian->Name = L"llloginlibrarian";
+			this->llloginlibrarian->Size = System::Drawing::Size(218, 34);
+			this->llloginlibrarian->TabIndex = 8;
+			this->llloginlibrarian->TabStop = true;
+			this->llloginlibrarian->Text = L"login as librarian";
+			this->llloginlibrarian->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &loginform::linkLabel1_LinkClicked);
+			// 
 			// loginform
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(15, 33);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::AppWorkspace;
 			this->ClientSize = System::Drawing::Size(650, 476);
+			this->Controls->Add(this->llloginlibrarian);
 			this->Controls->Add(this->llRegister);
 			this->Controls->Add(this->btncancel);
 			this->Controls->Add(this->btnok);
@@ -237,6 +253,11 @@ private: System::Void loginform_Load(System::Object^ sender, System::EventArgs^ 
 	   public: bool switchToRegister = false;
 private: System::Void llRegister_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	this->switchToRegister = true;
+	this->Close();
+}
+	   public:bool switchToLoginlibririan = false;
+private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	this->switchToLoginlibririan = true;
 	this->Close();
 }
 };

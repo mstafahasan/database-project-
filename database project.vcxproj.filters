@@ -27,6 +27,9 @@
     <ClCompile Include="RegisterForm.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="LoginLibrarianForm.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="loginform.h">
@@ -39,6 +42,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RegisterForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="LoginLibrarianForm.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="librarian.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
