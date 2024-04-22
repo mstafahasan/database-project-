@@ -23,6 +23,7 @@ namespace databaseproject {
 			//TODO: Add the constructor code here
 			//
 			lbHellouser->Text = "hello " + user->name;
+			borrowlabel->Text = "to borrow a book press on switch to borrow label";
 		}
 
 	protected:
@@ -38,6 +39,9 @@ namespace databaseproject {
 		}
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Label^ lbHellouser;
+	private: System::Windows::Forms::LinkLabel^ llborrowlabel;
+
+	private: System::Windows::Forms::Label^ borrowlabel;
 	protected:
 
 	private:
@@ -56,6 +60,8 @@ namespace databaseproject {
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainForm::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->lbHellouser = (gcnew System::Windows::Forms::Label());
+			this->llborrowlabel = (gcnew System::Windows::Forms::LinkLabel());
+			this->borrowlabel = (gcnew System::Windows::Forms::Label());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -82,12 +88,38 @@ namespace databaseproject {
 			this->lbHellouser->Size = System::Drawing::Size(72, 28);
 			this->lbHellouser->TabIndex = 1;
 			this->lbHellouser->Text = L"label2";
+			this->lbHellouser->Click += gcnew System::EventHandler(this, &MainForm::lbHellouser_Click);
+			// 
+			// llborrowlabel
+			// 
+			this->llborrowlabel->AutoSize = true;
+			this->llborrowlabel->Location = System::Drawing::Point(509, 105);
+			this->llborrowlabel->Name = L"llborrowlabel";
+			this->llborrowlabel->Size = System::Drawing::Size(307, 36);
+			this->llborrowlabel->TabIndex = 2;
+			this->llborrowlabel->TabStop = true;
+			this->llborrowlabel->Text = L"switch to borrow label";
+			this->llborrowlabel->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::llborrowlabel_LinkClicked);
+			// 
+			// borrowlabel
+			// 
+			this->borrowlabel->AutoSize = true;
+			this->borrowlabel->Font = (gcnew System::Drawing::Font(L"Tahoma", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->borrowlabel->Location = System::Drawing::Point(40, 115);
+			this->borrowlabel->Name = L"borrowlabel";
+			this->borrowlabel->Size = System::Drawing::Size(115, 24);
+			this->borrowlabel->TabIndex = 3;
+			this->borrowlabel->Text = L"borrowlabel";
+			this->borrowlabel->Click += gcnew System::EventHandler(this, &MainForm::borrowlabel_Click);
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(17, 36);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1032, 532);
+			this->Controls->Add(this->borrowlabel);
+			this->Controls->Add(this->llborrowlabel);
 			this->Controls->Add(this->lbHellouser);
 			this->Controls->Add(this->label1);
 			this->Font = (gcnew System::Drawing::Font(L"Tahoma", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -103,5 +135,14 @@ namespace databaseproject {
 #pragma endregion
 	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void lbHellouser_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+		   public:bool switch_to_borrow_label = false;
+	private: System::Void llborrowlabel_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+		this->switch_to_borrow_label = true;
+		this->Close();
+	}
+private: System::Void borrowlabel_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 }

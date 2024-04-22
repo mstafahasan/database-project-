@@ -1,3 +1,4 @@
+  databaseproject.borrowbook.resources - Embedded, ContainedInManifestFile, 
   databaseproject.loginform.resources - Embedded, ContainedInManifestFile, 
   databaseproject.LoginLibrarianForm.resources - Embedded, ContainedInManifestFile, 
   databaseproject.MainForm.resources - Embedded, ContainedInManifestFile, 
@@ -33,6 +34,32 @@ Class databaseproject.loginform: AutoLayout, AnsiClass, Class, Public, BeforeFie
     User user : Public
     Boolean switchToRegister : Public
     Boolean switchToLoginlibririan : Public
+Class Book: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 bookid : Public
+    System.String bookname : Public
+    System.String title : Public
+    System.String author : Public
+    System.String price : Public
+    System.String availability : Public
+    Int32 library_section_id : Public
+    Int32 publisher_id : Public
+    System.String publishdate : Public
+Class borrowprocess: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    System.String bookid : Public
+    System.String book_exist_or_not : Public
+    System.String return_date : Public
+    System.String user_id : Public
+    System.String branch_id : Public
+    System.String borrow_date : Public
+Class databaseproject.borrowbook: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(User): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    borrowprocess borrowbookk : Public
 Class librarian: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
@@ -53,9 +80,12 @@ Class databaseproject.LoginLibrarianForm: AutoLayout, AnsiClass, Class, Public, 
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     librarian Librarian : Public
+    Boolean switchtologinasmember : Public
 Class databaseproject.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(User): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Boolean switch_to_borrow_label : Public
 Class databaseproject.RegisterForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

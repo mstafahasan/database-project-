@@ -43,6 +43,8 @@ namespace databaseproject {
 	private: System::Windows::Forms::TextBox^ tbpassword;
 	private: System::Windows::Forms::Button^ tbnOK;
 	private: System::Windows::Forms::Button^ tbncancel;
+	private: System::Windows::Forms::LinkLabel^ llswitchtologinasmember;
+
 
 	protected:
 
@@ -68,6 +70,7 @@ namespace databaseproject {
 			this->tbpassword = (gcnew System::Windows::Forms::TextBox());
 			this->tbnOK = (gcnew System::Windows::Forms::Button());
 			this->tbncancel = (gcnew System::Windows::Forms::Button());
+			this->llswitchtologinasmember = (gcnew System::Windows::Forms::LinkLabel());
 			this->SuspendLayout();
 			// 
 			// librarianlogin
@@ -149,12 +152,28 @@ namespace databaseproject {
 			this->tbncancel->UseVisualStyleBackColor = true;
 			this->tbncancel->Click += gcnew System::EventHandler(this, &LoginLibrarianForm::tbncancel_Click);
 			// 
+			// llswitchtologinasmember
+			// 
+			this->llswitchtologinasmember->AutoSize = true;
+			this->llswitchtologinasmember->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->llswitchtologinasmember->LinkColor = System::Drawing::Color::FromArgb(static_cast<System::Int32>(static_cast<System::Byte>(0)),
+				static_cast<System::Int32>(static_cast<System::Byte>(0)), static_cast<System::Int32>(static_cast<System::Byte>(192)));
+			this->llswitchtologinasmember->Location = System::Drawing::Point(29, 491);
+			this->llswitchtologinasmember->Name = L"llswitchtologinasmember";
+			this->llswitchtologinasmember->Size = System::Drawing::Size(231, 34);
+			this->llswitchtologinasmember->TabIndex = 7;
+			this->llswitchtologinasmember->TabStop = true;
+			this->llswitchtologinasmember->Text = L"login as member ";
+			this->llswitchtologinasmember->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &LoginLibrarianForm::llswitchtologinasmember_LinkClicked);
+			// 
 			// LoginLibrarianForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(7, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::AppWorkspace;
 			this->ClientSize = System::Drawing::Size(762, 534);
+			this->Controls->Add(this->llswitchtologinasmember);
 			this->Controls->Add(this->tbncancel);
 			this->Controls->Add(this->tbnOK);
 			this->Controls->Add(this->tbpassword);
@@ -165,6 +184,7 @@ namespace databaseproject {
 			this->Icon = (cli::safe_cast<System::Drawing::Icon^>(resources->GetObject(L"$this.Icon")));
 			this->Name = L"LoginLibrarianForm";
 			this->Text = L"LoginLibrarianForm";
+			this->Load += gcnew System::EventHandler(this, &LoginLibrarianForm::LoginLibrarianForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -228,6 +248,13 @@ private: System::Void tbnOK_Click(System::Object^ sender, System::EventArgs^ e) 
 		MessageBox::Show("failed to connect to data base" + el->Message,
 			"Data base connection error", MessageBoxButtons::OK);
 	}
+}
+private: System::Void LoginLibrarianForm_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+	   public:bool switchtologinasmember = false;
+private: System::Void llswitchtologinasmember_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	this->switchtologinasmember = true;
+	this->Close();
 }
 };
 }

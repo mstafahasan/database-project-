@@ -349,6 +349,7 @@ private: System::Void btnOK_Click(System::Object^ sender, System::EventArgs^ e) 
 			user->phone = phone;
 			user->address = address;
 			user->password = Password;
+	
 			this->Close();
 		
 
