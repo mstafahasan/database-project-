@@ -128,6 +128,7 @@
     <ClCompile Include="MainForm.cpp" />
     <ClCompile Include="program.cpp" />
     <ClCompile Include="RegisterForm.cpp" />
+    <ClCompile Include="returnbook.cpp" />
     <ClCompile Include="showallbooks.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -146,6 +147,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="RegisterForm.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
+    <ClInclude Include="returnbook.h">
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="showallbooks.h">
@@ -168,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegisterForm.resx">
       <DependentUpon>RegisterForm.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="returnbook.resx">
+      <DependentUpon>returnbook.h</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="showallbooks.resx">
       <DependentUpon>showallbooks.h</DependentUpon>

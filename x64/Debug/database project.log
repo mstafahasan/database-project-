@@ -1,9 +1,6 @@
-﻿  program.cpp
-D:\vscode\database project\borrowbook.h(338,3): warning C4286: 'System::FormatException ^': is caught by base class ('System::Exception ^') on line 334
-  (compiling source file 'program.cpp')
-  
+﻿  borrowbook.cpp
+  program.cpp
 D:\vscode\database project\program.cpp(13,1): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
-  showallbooks.cpp
   Generating Code...
   borrowbook.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
   database project.vcxproj -> D:\vscode\database project\x64\Debug\database project.exe

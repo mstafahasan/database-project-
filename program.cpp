@@ -18,7 +18,7 @@ void main(array<String^>^ args)
     librarian^ Librarian = nullptr;
     Book^ book = nullptr;
     borrowprocess^ borrowbookk = nullptr;
-
+    
 
     while (true) {
         databaseproject::loginform loginForm;
@@ -79,13 +79,16 @@ void main(array<String^>^ args)
                     borrowbookk = BorrowBook.borrowbookk;
                 }
 
-                if (borrowbookk != nullptr) {
-
+                if ((borrowbookk != nullptr)&&( borrowbookk->availability=="available") ){
+                    MessageBox::Show("Book availability: " + borrowbookk->availability, "Book Availability", MessageBoxButtons::OK, MessageBoxIcon::Information);
                     MessageBox::Show("seccefully borrow book process ", "program.cpp", MessageBoxButtons::OK);
                     break;
                 }
 
+
                 else {
+                    MessageBox::Show("Book availability: " + borrowbookk->availability, "Book Availability", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
                     MessageBox::Show("borrow book failed", "program.cpp", MessageBoxButtons::OK);
                     break;
                 }

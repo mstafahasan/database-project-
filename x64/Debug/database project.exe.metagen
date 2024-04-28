@@ -3,6 +3,7 @@
   databaseproject.LoginLibrarianForm.resources - Embedded, ContainedInManifestFile, 
   databaseproject.MainForm.resources - Embedded, ContainedInManifestFile, 
   databaseproject.RegisterForm.resources - Embedded, ContainedInManifestFile, 
+  databaseproject.returnbook.resources - Embedded, ContainedInManifestFile, 
   databaseproject.showallbooks.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly database project, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
@@ -51,7 +52,7 @@ Class borrowprocess: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     Int32 bookid : Public
-    System.String book_exist_or_not : Public
+    System.String availability : Public
     System.String return_date : Public
     Int32 user_id : Public
     Int32 branch_id : Public
@@ -101,3 +102,6 @@ Class databaseproject.showallbooks: AutoLayout, AnsiClass, Class, Public, Before
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     Boolean switchtodashboard : Public
+Class databaseproject.returnbook: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

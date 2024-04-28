@@ -8,7 +8,7 @@ public:
     int  bookid;
 
   
-    String^ book_exist_or_not;
+    String^ availability;
     String^ return_date;
     int user_id;
     int branch_id;

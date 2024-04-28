@@ -292,11 +292,10 @@ namespace databaseproject {
 			int user_id = userid;
 			String^ bookid = tbbookid->Text;
 			int boookid;
+			String^ availabilityyResult;
 
 			if (!Int32::TryParse(bookid, boookid)) {
 				MessageBox::Show("Please enter a valid book ID.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-				// Handle the case where bookid is not a valid integer
-				// For example, display an error message or set a default value
 				return; // Exit the function or return an error code
 			}
 
@@ -305,41 +304,60 @@ namespace databaseproject {
 
 			if (!Int32::TryParse(branchid, branchhid)) {
 				MessageBox::Show("Please enter a valid branch ID.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-				// Handle the case where branchid is not a valid integer
-				// For example, display an error message or set a default value
 				return; // Exit the function or return an error code
 			}
+
+			// Define the connection string
 			String^ connString = "Data Source=DESKTOP-U852T64;Initial Catalog=databaseproject;Integrated Security=True;Encrypt=False";
-			SqlConnection sqlconn(connString);
-			sqlconn.Open();
-			String^ sqlQuery = "EXEC BorrowBookProcedure @book_id, @user_id , @branch_id;";
-			SqlCommand command(sqlQuery, % sqlconn);
-			command.Parameters->AddWithValue("@book_id", boookid);
-			command.Parameters->AddWithValue("@user_id", user_id);
-			command.Parameters->AddWithValue("@branch_id", branchhid);
 
-			command.ExecuteNonQuery();
+			// Create a SqlConnection
+			SqlConnection^ sqlconn = gcnew SqlConnection(connString);
+			sqlconn->Open();
+
+			// Define the SQL query to execute the stored procedure
+			String^ sqlQuery = "EXEC BorrowBookProcedure @book_id, @user_id, @branch_id, @Availability OUTPUT;";
+			SqlCommand^ command = gcnew SqlCommand(sqlQuery, sqlconn);
+
+			// Add parameters
+			command->Parameters->AddWithValue("@book_id", boookid);
+			command->Parameters->AddWithValue("@user_id", user_id);
+			command->Parameters->AddWithValue("@branch_id", branchhid);
+
+			// Define a parameter to capture the output availability
+			SqlParameter^ availabilityParam = gcnew SqlParameter("@Availability", SqlDbType::VarChar, 50);
+			availabilityParam->Direction = ParameterDirection::Output;
+			command->Parameters->Add(availabilityParam);
+
+			// Execute the command
+			command->ExecuteNonQuery();
+
+			// Get the output value of availability from the parameter
+			availabilityyResult = safe_cast<String^>(availabilityParam->Value);
+
+			// Create a new borrowprocess object and assign values
 			borrowbookk = gcnew borrowprocess;
-
 			borrowbookk->bookid = boookid;
 			borrowbookk->branch_id = branchhid;
 			borrowbookk->user_id = user_id;
-			borrowbookk->return_date = "2000--6-7";
-			borrowbookk->borrow_date = "1999-5-8";
+			borrowbookk->return_date = "2000-06-07"; // Modify this if needed
+			borrowbookk->borrow_date = "1999-05-08"; // Modify this if needed
 
-
+			// Set borrowbookk->availability based on the availabilityResult
+			if (availabilityyResult == "available") {
+				borrowbookk->availability = "available";
+			}
+			else {
+				borrowbookk->availability = "not available";
+			}
 
 		}
-
+		catch (SqlException^ ex) {
+			// Handle SQL exceptions
+			MessageBox::Show("SQL Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		}
 		catch (Exception^ ex) {
-			MessageBox::Show("Failed to borrow book" + ex->Message,
-				"Borrow book Failure", MessageBoxButtons::OK);
-		}
-		catch (FormatException^) {
-			// Handle the case where bookid is not a valid integer
-			// For example, display an error message or set a default value
-			MessageBox::Show("Please enter a valid book ID.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			return; // Exit the function or return an error code
+			// Handle any other exceptions
+			MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 
 

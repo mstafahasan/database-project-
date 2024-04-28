@@ -7,3 +7,4 @@ D:\vscode\database project\x64\Debug\databaseproject.RegisterForm.resources
 D:\vscode\database project\x64\Debug\databaseproject.LoginLibrarianForm.resources
 D:\vscode\database project\x64\Debug\databaseproject.borrowbook.resources
 D:\vscode\database project\x64\Debug\databaseproject.showallbooks.resources
+D:\vscode\database project\x64\Debug\databaseproject.returnbook.resources

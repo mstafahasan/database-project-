@@ -36,6 +36,9 @@
     <ClCompile Include="showallbooks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="returnbook.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="loginform.h">
@@ -63,6 +66,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="showallbooks.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="returnbook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
