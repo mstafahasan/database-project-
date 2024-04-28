@@ -5,6 +5,7 @@
   databaseproject.RegisterForm.resources - Embedded, ContainedInManifestFile, 
   databaseproject.returnbook.resources - Embedded, ContainedInManifestFile, 
   databaseproject.showallbooks.resources - Embedded, ContainedInManifestFile, 
+  databaseproject.show_borrow_books.resources - Embedded, ContainedInManifestFile, 
 ImageRuntimeVersion: v4.0.30319
 Assembly database project, Version=0.0.*, Culture=Invariant Language (Invariant Country): 
 	hash=SHA1, flags=PublicKey
@@ -92,6 +93,7 @@ Class databaseproject.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFiel
     Boolean switch_to_borrow_label : Public
     Boolean switch_to_show_all_books : Public
     Boolean switchtoreturnbook : Public
+    Boolean switch_to_show_borrowed_books : Public
 Class databaseproject.RegisterForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -119,3 +121,9 @@ Class databaseproject.returnbook: AutoLayout, AnsiClass, Class, Public, BeforeFi
     Int32 userid : Public
     Boolean backtodashboard : Public
     returnprocess returnbookk : Public
+Class databaseproject.show_borrow_books: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(Int32): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 userId : Public
+    Boolean switchtodashboard : Public

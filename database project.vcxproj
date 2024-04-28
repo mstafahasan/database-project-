@@ -130,6 +130,7 @@
     <ClCompile Include="RegisterForm.cpp" />
     <ClCompile Include="returnbook.cpp" />
     <ClCompile Include="showallbooks.cpp" />
+    <ClCompile Include="show_borrow_books.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="borrowbook.h">
@@ -156,6 +157,9 @@
     <ClInclude Include="showallbooks.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="show_borrow_books.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
@@ -179,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="showallbooks.resx">
       <DependentUpon>showallbooks.h</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="show_borrow_books.resx">
+      <DependentUpon>show_borrow_books.h</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

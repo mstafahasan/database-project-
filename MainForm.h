@@ -49,6 +49,8 @@ namespace databaseproject {
 	private: System::Windows::Forms::LinkLabel^ llshow;
 	private: System::Windows::Forms::Label^ returnbook;
 	private: System::Windows::Forms::LinkLabel^ linkLabel1;
+	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::LinkLabel^ linkLabel2;
 
 
 
@@ -77,6 +79,8 @@ namespace databaseproject {
 			this->llshow = (gcnew System::Windows::Forms::LinkLabel());
 			this->returnbook = (gcnew System::Windows::Forms::Label());
 			this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
+			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->linkLabel2 = (gcnew System::Windows::Forms::LinkLabel());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -174,11 +178,35 @@ namespace databaseproject {
 			this->linkLabel1->Text = L"Switch to return book ";
 			this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::linkLabel1_LinkClicked);
 			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Tahoma", 10.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(50, 328);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(136, 21);
+			this->label2->TabIndex = 8;
+			this->label2->Text = L"show_all_borrow";
+			// 
+			// linkLabel2
+			// 
+			this->linkLabel2->AutoSize = true;
+			this->linkLabel2->Location = System::Drawing::Point(521, 328);
+			this->linkLabel2->Name = L"linkLabel2";
+			this->linkLabel2->Size = System::Drawing::Size(436, 36);
+			this->linkLabel2->TabIndex = 9;
+			this->linkLabel2->TabStop = true;
+			this->linkLabel2->Text = L"Switch to Show All Borrow Book";
+			this->linkLabel2->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::linkLabel2_LinkClicked);
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(17, 36);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1032, 532);
+			this->Controls->Add(this->linkLabel2);
+			this->Controls->Add(this->label2);
 			this->Controls->Add(this->linkLabel1);
 			this->Controls->Add(this->returnbook);
 			this->Controls->Add(this->llshow);
@@ -193,6 +221,7 @@ namespace databaseproject {
 			this->Margin = System::Windows::Forms::Padding(7);
 			this->Name = L"MainForm";
 			this->Text = L"MainForm";
+			this->Load += gcnew System::EventHandler(this, &MainForm::MainForm_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -222,6 +251,13 @@ private: System::Void showallbooks_Click(System::Object^ sender, System::EventAr
 
 private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	this->switchtoreturnbook = true;
+	this->Close();
+}
+private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
+}
+	  public:bool switch_to_show_borrowed_books = true;
+private: System::Void linkLabel2_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	this->switch_to_show_borrowed_books = true;
 	this->Close();
 }
 };

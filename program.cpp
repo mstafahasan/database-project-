@@ -8,6 +8,7 @@
 #include"showallbooks.h"
 #include "returnbook.h"
 #include "returnprocess.h"
+#include"show_borrow_books.h"
 using namespace System;
 using namespace System::Windows::Forms;
 
@@ -131,6 +132,16 @@ void main(array<String^>^ args)
                 }
 
             }
+            if (mainform.switch_to_show_borrowed_books) {
+                databaseproject::show_borrow_books borr_books(user->id);
+                Application::Run(% borr_books);
+                if (borr_books.switchtodashboard)
+                {
+                    borr_books.Close();
+                    continue;
+                }
+            }
+
         }
 
         else {
