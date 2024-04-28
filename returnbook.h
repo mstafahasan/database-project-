@@ -29,7 +29,7 @@ namespace databaseproject {
 			//
 			//TODO: Add the constructor code here
 			//
-			labelreturn->Text="Return Book Form For  " + user->name;
+			labelreturn->Text = "Return Book Form For  " + user->name;
 			this->userid = user->id;
 		}
 
@@ -59,7 +59,7 @@ namespace databaseproject {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -198,94 +198,116 @@ namespace databaseproject {
 	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Close();
 	}
-private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
-}
+	private: System::Void label1_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
 	public:returnprocess^ returnbookk = nullptr;
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	try {
-		// Extracting values from UI elements
-		String^ bookid = tbbookid->Text;
-		int boookid;
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		try {
+			// Extracting values from UI elements
+			String^ bookid = tbbookid->Text;
+			int boookid;
 
-		if (!Int32::TryParse(bookid, boookid)) {
-			MessageBox::Show("Please enter a valid book ID.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			return; // Exit the function or return an error code
+			if (!Int32::TryParse(bookid, boookid)) {
+				MessageBox::Show("Please enter a valid book ID.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return; // Exit the function or return an error code
+			}
+
+			String^ branchid = tbbranchid->Text;
+			int branchhid;
+
+			if (!Int32::TryParse(branchid, branchhid)) {
+				MessageBox::Show("Please enter a valid branch ID.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				return; // Exit the function or return an error code
+			}
+
+			// Getting the user ID from the user session or any other suitable way
+			int user_id = userid; // Replace this with your logic to get the user ID
+
+			// Define the connection string
+			String^ connString = "Data Source=DESKTOP-U852T64;Initial Catalog=databaseproject;Integrated Security=True;Encrypt=False";
+
+			// Create a SqlConnection
+			SqlConnection^ sqlconn = gcnew SqlConnection(connString);
+			sqlconn->Open();
+
+			// Define the SQL query to execute the stored procedure
+			String^ sqlQuery = "EXEC ReturnBookProcedure @book_id, @branch_id, @user_id, @Availability OUTPUT;";
+			SqlCommand^ command = gcnew SqlCommand(sqlQuery, sqlconn);
+
+			// Add parameters
+			command->Parameters->AddWithValue("@book_id", boookid);
+			command->Parameters->AddWithValue("@branch_id", branchhid);
+			command->Parameters->AddWithValue("@user_id", user_id);
+
+			// Define a parameter to capture the output availability
+			SqlParameter^ availabilityParam = gcnew SqlParameter("@Availability", SqlDbType::VarChar, 50);
+			availabilityParam->Direction = ParameterDirection::Output;
+			command->Parameters->Add(availabilityParam);
+
+			// Execute the command
+			command->ExecuteNonQuery();
+
+			// Get the output value of availability from the parameter
+			String^ availabilityResult = safe_cast<String^>(availabilityParam->Value);
+
+			// Handle the availability result
+			if (availabilityResult == "available") {
+				// Book was returned successfully and is now available
+				Console::WriteLine("Book returned successfully.");
+			}
+			else {
+				// Book return failed or book was already available
+				Console::WriteLine("Book return failed or book was already available.");
+			}
+
+			// Creating a returnprocess object
+			returnbookk = gcnew returnprocess;
+			returnbookk->bookid = boookid;
+			returnbookk->branch_id = branchhid;
+			returnbookk->return_date = "2000-06-07"; // Modify this if needed
+			returnbookk->borrow_date = "1999-05-08"; // Modify this if needed
+			returnbookk->availability = availabilityResult;
+			if (availabilityResult == "available") {
+				returnbookk->availability = "available";
+			}
+			else {
+				returnbookk->availability = "not available";
+			}
+
+			// Second query to select user ID from user borrow book table
+			String^ secondQuery = "SELECT user_id FROM user_borrow_book WHERE book_id = @book_id AND branch_id = @branch_id;";
+			SqlCommand^ secondCommand = gcnew SqlCommand(secondQuery, sqlconn);
+
+			// Add parameters for the second query
+			secondCommand->Parameters->AddWithValue("@book_id", boookid);
+			secondCommand->Parameters->AddWithValue("@branch_id", branchhid);
+
+			// Execute the second command
+			SqlDataReader^ reader = secondCommand->ExecuteReader();
+
+			// Check if there are rows returned
+			if (reader->Read()) {
+				int user_idd = safe_cast<int>(reader["user_id"]);
+				// Assign the retrieved user_idd to returnbookk->user_id
+				returnbookk->user_id = user_idd;
+			}
+
+			// Close the reader and the connection
+			reader->Close();
+
 		}
-
-		String^ branchid = tbbranchid->Text;
-		int branchhid;
-
-		if (!Int32::TryParse(branchid, branchhid)) {
-			MessageBox::Show("Please enter a valid branch ID.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-			return; // Exit the function or return an error code
+		catch (SqlException^ ex) {
+			// Handle SQL exceptions
+			Console::WriteLine("SQL Error: " + ex->Message);
+			MessageBox::Show("SQL Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
-
-		// Getting the user ID from the user session or any other suitable way
-		int user_id = userid; // Replace this with your logic to get the user ID
-
-		// Define the connection string
-		String^ connString = "Data Source=DESKTOP-U852T64;Initial Catalog=databaseproject;Integrated Security=True;Encrypt=False";
-
-		// Create a SqlConnection
-		SqlConnection^ sqlconn = gcnew SqlConnection(connString);
-		sqlconn->Open();
-
-		// Define the SQL query to execute the stored procedure
-		String^ sqlQuery = "EXEC ReturnBookProcedure @book_id, @branch_id, @user_id, @Availability OUTPUT;";
-		SqlCommand^ command = gcnew SqlCommand(sqlQuery, sqlconn);
-
-		// Add parameters
-		command->Parameters->AddWithValue("@book_id", boookid);
-		command->Parameters->AddWithValue("@branch_id", branchhid);
-		command->Parameters->AddWithValue("@user_id", user_id);
-
-		// Define a parameter to capture the output availability
-		SqlParameter^ availabilityParam = gcnew SqlParameter("@Availability", SqlDbType::VarChar, 50);
-		availabilityParam->Direction = ParameterDirection::Output;
-		command->Parameters->Add(availabilityParam);
-
-		// Execute the command
-		command->ExecuteNonQuery();
-
-		// Get the output value of availability from the parameter
-		String^ availabilityResult = safe_cast<String^>(availabilityParam->Value);
-
-		// Handle the availability result
-		if (availabilityResult == "available") {
-			// Book was returned successfully and is now available
-			Console::WriteLine("Book returned successfully.");
-		}
-		else {
-			// Book return failed or book was already available
-			Console::WriteLine("Book return failed or book was already available.");
-		}
-
-		// Creating a returnprocess object
-		returnbookk = gcnew returnprocess;
-		returnbookk->bookid = boookid;
-		returnbookk->branch_id = branchhid;
-		returnbookk->user_id = user_id;
-		returnbookk->return_date = "2000-06-07"; // Modify this if needed
-		returnbookk->borrow_date = "1999-05-08"; // Modify this if needed
-		returnbookk->availability = availabilityResult;
-		if (availabilityResult == "available") {
-			returnbookk->availability = "available";
-		}
-		else {
-			returnbookk->availability = "not available";
+		catch (Exception^ ex) {
+			// Handle any other exceptions
+			Console::WriteLine("Error: " + ex->Message);
+			MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
 	}
-	catch (SqlException^ ex) {
-		// Handle SQL exceptions
-		Console::WriteLine("SQL Error: " + ex->Message);
-		MessageBox::Show("SQL Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
-	catch (Exception^ ex) {
-		// Handle any other exceptions
-		Console::WriteLine("Error: " + ex->Message);
-		MessageBox::Show("Error: " + ex->Message, "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
-	}
 
-}
-};
+	};
+
 }

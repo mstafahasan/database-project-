@@ -116,7 +116,7 @@ void main(array<String^>^ args)
                 else {
                     returnbookk = ReturnBook.returnbookk;
                 }
-                if ((returnbookk != nullptr) && (returnbookk->availability == "not available")&&ReturnBook.userid==user->id) {
+                if ((returnbookk != nullptr) && (returnbookk->availability == "not available")&&returnbookk->user_id==user->id) {
                     MessageBox::Show("Book availability: " + returnbookk->availability, "Book Availability", MessageBoxButtons::OK, MessageBoxIcon::Information);
                     MessageBox::Show("seccefully return book process ", "program.cpp", MessageBoxButtons::OK);
                     break;
@@ -126,7 +126,7 @@ void main(array<String^>^ args)
                 else {
                     MessageBox::Show("Book availability: " + returnbookk->availability, "Book Availability", MessageBoxButtons::OK, MessageBoxIcon::Information);
 
-                    MessageBox::Show("return book failed", "program.cpp", MessageBoxButtons::OK);
+                    MessageBox::Show("return book failed , you didn't borrow that book  ", "program.cpp", MessageBoxButtons::OK);
                     break;
                 }
 
