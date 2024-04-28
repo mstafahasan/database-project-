@@ -18,7 +18,7 @@ void main(array<String^>^ args)
     Book^ book = nullptr;
     borrowprocess^ borrowbookk = nullptr;
 
-    
+
     while (true) {
         databaseproject::loginform loginForm;
         loginForm.ShowDialog();
@@ -37,7 +37,7 @@ void main(array<String^>^ args)
         }
         else {
             if (loginForm.switchToLoginlibririan) {
-                
+
                 databaseproject::LoginLibrarianForm loginlibrarianForm;
                 loginlibrarianForm.ShowDialog();
                 if (loginlibrarianForm.switchtologinasmember)
@@ -58,26 +58,44 @@ void main(array<String^>^ args)
         }
     }
 
+    while (true) {
+        if (user != nullptr) {
 
-    if (user != nullptr) {
-        
-        databaseproject::MainForm mainform(user);
-        Application::Run(% mainform);
-        if (mainform.switch_to_borrow_label ) {
-         
-            databaseproject::borrowbook BorrowBook(user);
-            Application::Run(% BorrowBook);
+            databaseproject::MainForm mainform(user);
+            Application::Run(% mainform);
+            if (mainform.switch_to_borrow_label) {
 
-            if (borrowbookk != nullptr &&( borrowbookk->user_id == (user->id.ToString()))) {
+                databaseproject::borrowbook BorrowBook(user);
+                Application::Run(% BorrowBook);
 
-                MessageBox::Show("seccefully borrow book process ", "program.cpp", MessageBoxButtons::OK);
+                if (BorrowBook.switch_to_dashboard)
+                {
+                    BorrowBook.Close();
+                    continue;
+                }
+                else {
+                    borrowbookk = BorrowBook.borrowbookk;
+                }
+
+                if (borrowbookk != nullptr) {
+
+                    MessageBox::Show("seccefully borrow book process ", "program.cpp", MessageBoxButtons::OK);
+                    break;
+                }
+
+                else {
+                    MessageBox::Show("borrow book failed", "program.cpp", MessageBoxButtons::OK);
+                    break;
+                }
             }
-            else {
-                MessageBox::Show("borrow book failed", "program.cpp", MessageBoxButtons::OK);
-            }
+
         }
-        
-        
+
+        else {
+            MessageBox::Show("Authentication Cancelled", "program.cpp", MessageBoxButtons::OK);
+            break;
+        }
+        break;
 
     }
     if (Librarian != nullptr) {
@@ -86,7 +104,11 @@ void main(array<String^>^ args)
     }
 
 
-    else {
-        MessageBox::Show("Authentication Cancelled", "program.cpp", MessageBoxButtons::OK);
-    }
+
 }
+
+
+
+
+
+

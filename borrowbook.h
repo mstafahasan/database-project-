@@ -19,6 +19,8 @@ namespace databaseproject {
 	public ref class borrowbook : public System::Windows::Forms::Form
 	{
 	public:
+		int userid;
+	public:
 		borrowbook(User^ user)
 		{
 			InitializeComponent();
@@ -26,7 +28,7 @@ namespace databaseproject {
 			//TODO: Add the constructor code here
 			//
 			borrowbooklabel->Text = "borrow book form for " + user->name;
-			int userrid = user->id;
+			this->userid = user->id;
 		}
 
 	protected:
@@ -58,9 +60,22 @@ namespace databaseproject {
 	private: System::Windows::Forms::Label^ id;
 
 
-	private: System::Windows::Forms::Label^ label6;
+
 	private: System::Windows::Forms::TextBox^ tbbranchid;
-	private: System::Windows::Forms::TextBox^ tbyourid;
+
+	private: System::Windows::Forms::LinkLabel^ llreturn;
+	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
+	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip2;
+	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip3;
+
+
+
+
+
+
+
+	private: System::ComponentModel::IContainer^ components;
+
 
 
 
@@ -70,7 +85,7 @@ namespace databaseproject {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -79,6 +94,7 @@ namespace databaseproject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->borrowbooklabel = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -87,9 +103,11 @@ namespace databaseproject {
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->button2 = (gcnew System::Windows::Forms::Button());
 			this->id = (gcnew System::Windows::Forms::Label());
-			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->tbbranchid = (gcnew System::Windows::Forms::TextBox());
-			this->tbyourid = (gcnew System::Windows::Forms::TextBox());
+			this->llreturn = (gcnew System::Windows::Forms::LinkLabel());
+			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->contextMenuStrip2 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->contextMenuStrip3 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->SuspendLayout();
 			// 
 			// label1
@@ -129,7 +147,7 @@ namespace databaseproject {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(92, 166);
+			this->label3->Location = System::Drawing::Point(92, 98);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(110, 34);
 			this->label3->TabIndex = 7;
@@ -139,16 +157,17 @@ namespace databaseproject {
 			// 
 			this->tbbookid->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tbbookid->Location = System::Drawing::Point(310, 175);
+			this->tbbookid->Location = System::Drawing::Point(310, 98);
 			this->tbbookid->Name = L"tbbookid";
 			this->tbbookid->Size = System::Drawing::Size(453, 40);
 			this->tbbookid->TabIndex = 9;
+			this->tbbookid->TextChanged += gcnew System::EventHandler(this, &borrowbook::tbbookid_TextChanged);
 			// 
 			// button1
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Tahoma", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(323, 366);
+			this->button1->Location = System::Drawing::Point(310, 249);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(124, 49);
 			this->button1->TabIndex = 11;
@@ -160,7 +179,7 @@ namespace databaseproject {
 			// 
 			this->button2->Font = (gcnew System::Drawing::Font(L"Tahoma", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(531, 366);
+			this->button2->Location = System::Drawing::Point(491, 249);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(124, 49);
 			this->button2->TabIndex = 12;
@@ -173,51 +192,62 @@ namespace databaseproject {
 			this->id->AutoSize = true;
 			this->id->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->id->Location = System::Drawing::Point(92, 309);
+			this->id->Location = System::Drawing::Point(92, 172);
 			this->id->Name = L"id";
 			this->id->Size = System::Drawing::Size(138, 34);
 			this->id->TabIndex = 13;
 			this->id->Text = L"Branch_id";
 			this->id->Click += gcnew System::EventHandler(this, &borrowbook::label5_Click);
 			// 
-			// label6
-			// 
-			this->label6->AutoSize = true;
-			this->label6->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label6->Location = System::Drawing::Point(92, 105);
-			this->label6->Name = L"label6";
-			this->label6->Size = System::Drawing::Size(106, 34);
-			this->label6->TabIndex = 14;
-			this->label6->Text = L"Your Id";
-			this->label6->Click += gcnew System::EventHandler(this, &borrowbook::label6_Click);
-			// 
 			// tbbranchid
 			// 
 			this->tbbranchid->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tbbranchid->Location = System::Drawing::Point(310, 309);
+			this->tbbranchid->Location = System::Drawing::Point(310, 166);
 			this->tbbranchid->Name = L"tbbranchid";
 			this->tbbranchid->Size = System::Drawing::Size(453, 40);
 			this->tbbranchid->TabIndex = 15;
 			// 
-			// tbyourid
+			// llreturn
 			// 
-			this->tbyourid->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->llreturn->AutoSize = true;
+			this->llreturn->BackColor = System::Drawing::SystemColors::ActiveBorder;
+			this->llreturn->Font = (gcnew System::Drawing::Font(L"Tahoma", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->tbyourid->Location = System::Drawing::Point(310, 105);
-			this->tbyourid->Name = L"tbyourid";
-			this->tbyourid->Size = System::Drawing::Size(453, 40);
-			this->tbyourid->TabIndex = 16;
+			this->llreturn->LinkColor = System::Drawing::Color::Black;
+			this->llreturn->Location = System::Drawing::Point(694, 274);
+			this->llreturn->Name = L"llreturn";
+			this->llreturn->Size = System::Drawing::Size(69, 24);
+			this->llreturn->TabIndex = 17;
+			this->llreturn->TabStop = true;
+			this->llreturn->Text = L"Reutrn";
+			this->llreturn->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &borrowbook::llreturn_LinkClicked);
+			// 
+			// contextMenuStrip1
+			// 
+			this->contextMenuStrip1->ImageScalingSize = System::Drawing::Size(20, 20);
+			this->contextMenuStrip1->Name = L"contextMenuStrip1";
+			this->contextMenuStrip1->Size = System::Drawing::Size(61, 4);
+			// 
+			// contextMenuStrip2
+			// 
+			this->contextMenuStrip2->ImageScalingSize = System::Drawing::Size(20, 20);
+			this->contextMenuStrip2->Name = L"contextMenuStrip2";
+			this->contextMenuStrip2->Size = System::Drawing::Size(61, 4);
+			// 
+			// contextMenuStrip3
+			// 
+			this->contextMenuStrip3->ImageScalingSize = System::Drawing::Size(20, 20);
+			this->contextMenuStrip3->Name = L"contextMenuStrip3";
+			this->contextMenuStrip3->Size = System::Drawing::Size(61, 4);
 			// 
 			// borrowbook
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(7, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(940, 597);
-			this->Controls->Add(this->tbyourid);
+			this->Controls->Add(this->llreturn);
 			this->Controls->Add(this->tbbranchid);
-			this->Controls->Add(this->label6);
 			this->Controls->Add(this->id);
 			this->Controls->Add(this->button2);
 			this->Controls->Add(this->button1);
@@ -236,57 +266,97 @@ namespace databaseproject {
 #pragma endregion
 	private: System::Void borrowbook_Load(System::Object^ sender, System::EventArgs^ e) {
 	}
-	
 
-private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
-	this->Close();
-}
-	   public:borrowprocess^ borrowbookk = nullptr;
-private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-	String^ bookid = tbbookid->Text;
-	String^ existornot = "yes";
-	String^ branchid = tbbranchid->Text;
-	String^ user_id = tbyourid->Text;
-	if (bookid->Length == 0||branchid->Length==0||user_id->Length==0 )
-	{
-		MessageBox::Show("Please enter all the fields",
-			"One or more empty fields", MessageBoxButtons::OK);
-		return;
+
+	private: System::Void button2_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Close();
 	}
-	try {
-		String^ connString = "Data Source=DESKTOP-U852T64;Initial Catalog=databaseproject;Integrated Security=True;Encrypt=False";
-		SqlConnection sqlconn(connString);
-		sqlconn.Open();
-		String^ sqlQuery = "INSERT INTO user_borrow_book " +
-			"([book_id], [user_id], [book_exist_or_not], branch_id) VALUES " +
-			"(@book_id, @user_id, @book_exist_or_not, @branch_id);";
-		SqlCommand command(sqlQuery, % sqlconn);
-		command.Parameters->AddWithValue("@book_id", bookid);
-		command.Parameters->AddWithValue("@user_id", user_id);
-		command.Parameters->AddWithValue("@book_exist_or_not", existornot);
-		command.Parameters->AddWithValue("@branch_id", branchid);
+	public:borrowprocess^ borrowbookk = nullptr;
+	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
+		//String^ bookid = tbbookid->Text;
+	//int boookid = Convert::ToInt32(bookid);
+		//String^ branchid = tbbranchid->Text;
+		//int branchhid = Convert::ToInt32(branchid);
+		//int boookid = Decimal::ToInt32(numericUpDown1->Value);
+		// branchhid = Decimal::ToInt32(numericUpDown1->Value);
 
-		command.ExecuteNonQuery();
-		borrowbookk = gcnew borrowprocess ;
+		//int user_id = userid;
+		/*if (bookid->Length == 0 || branchid->Length == 0)
+		{
+			MessageBox::Show("Please enter all the fields",
+				"One or more empty fields", MessageBoxButtons::OK);
+			return;
+		}*/
 
-		borrowbookk->bookid = bookid;
-		borrowbookk->branch_id = branchid;
-		borrowbookk->user_id = user_id;
-		borrowbookk->return_date = "2000--6-7";
-		borrowbookk->borrow_date = "1999-5-8";
-		borrowbookk->book_exist_or_not = existornot;
+		try {
+			int user_id = userid;
+			String^ bookid = tbbookid->Text;
+			int boookid;
+
+			if (!Int32::TryParse(bookid, boookid)) {
+				MessageBox::Show("Please enter a valid book ID.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				// Handle the case where bookid is not a valid integer
+				// For example, display an error message or set a default value
+				return; // Exit the function or return an error code
+			}
+
+			String^ branchid = tbbranchid->Text;
+			int branchhid;
+
+			if (!Int32::TryParse(branchid, branchhid)) {
+				MessageBox::Show("Please enter a valid branch ID.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+				// Handle the case where branchid is not a valid integer
+				// For example, display an error message or set a default value
+				return; // Exit the function or return an error code
+			}
+			String^ connString = "Data Source=DESKTOP-U852T64;Initial Catalog=databaseproject;Integrated Security=True;Encrypt=False";
+			SqlConnection sqlconn(connString);
+			sqlconn.Open();
+			String^ sqlQuery = "EXEC BorrowBookProcedure @book_id, @user_id , @branch_id;";
+			SqlCommand command(sqlQuery, % sqlconn);
+			command.Parameters->AddWithValue("@book_id", boookid);
+			command.Parameters->AddWithValue("@user_id", user_id);
+			command.Parameters->AddWithValue("@branch_id", branchhid);
+
+			command.ExecuteNonQuery();
+			borrowbookk = gcnew borrowprocess;
+
+			borrowbookk->bookid = boookid;
+			borrowbookk->branch_id = branchhid;
+			borrowbookk->user_id = user_id;
+			borrowbookk->return_date = "2000--6-7";
+			borrowbookk->borrow_date = "1999-5-8";
+
+
+
+		}
+
+		catch (Exception^ ex) {
+			MessageBox::Show("Failed to borrow book" + ex->Message,
+				"Borrow book Failure", MessageBoxButtons::OK);
+		}
+		catch (FormatException^) {
+			// Handle the case where bookid is not a valid integer
+			// For example, display an error message or set a default value
+			MessageBox::Show("Please enter a valid book ID.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+			return; // Exit the function or return an error code
+		}
+
 
 	}
-	catch (Exception^ ex) {
-		MessageBox::Show("Failed to borrow book" + ex->Message,
-			"Borrow book Failure", MessageBoxButtons::OK);
+	private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
 	}
+	private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+	public:bool switch_to_dashboard = false;
+	private: System::Void llreturn_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+		this->switch_to_dashboard = true;
+		this->Close();
 
-
-}
-private: System::Void label6_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-private: System::Void label5_Click(System::Object^ sender, System::EventArgs^ e) {
-}
-};
+	}
+	private: System::Void tbbookid_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	private: System::Void numericUpDown1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
+	}
+	};
 }

@@ -5,12 +5,12 @@ using namespace System;
 public ref class borrowprocess {
 
 public:
-    String^ bookid;
+    int  bookid;
 
   
     String^ book_exist_or_not;
     String^ return_date;
-    String^ user_id;
-    String^ branch_id;
+    int user_id;
+    int branch_id;
     String^ borrow_date;
 };
