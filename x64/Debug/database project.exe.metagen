@@ -91,6 +91,7 @@ Class databaseproject.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFiel
   Fields:
     Boolean switch_to_borrow_label : Public
     Boolean switch_to_show_all_books : Public
+    Boolean switchtoreturnbook : Public
 Class databaseproject.RegisterForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -102,6 +103,19 @@ Class databaseproject.showallbooks: AutoLayout, AnsiClass, Class, Public, Before
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
     Boolean switchtodashboard : Public
+Class returnprocess: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 bookid : Public
+    System.String availability : Public
+    System.String return_date : Public
+    Int32 user_id : Public
+    Int32 branch_id : Public
+    System.String borrow_date : Public
 Class databaseproject.returnbook: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
-    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+    Void .ctor(User): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 userid : Public
+    Boolean backtodashboard : Public
+    returnprocess returnbookk : Public

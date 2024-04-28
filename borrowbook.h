@@ -130,6 +130,7 @@ namespace databaseproject {
 			this->borrowbooklabel->Size = System::Drawing::Size(94, 36);
 			this->borrowbooklabel->TabIndex = 1;
 			this->borrowbooklabel->Text = L"label2";
+			this->borrowbooklabel->Click += gcnew System::EventHandler(this, &borrowbook::borrowbooklabel_Click);
 			// 
 			// label2
 			// 
@@ -152,6 +153,7 @@ namespace databaseproject {
 			this->label3->Size = System::Drawing::Size(110, 34);
 			this->label3->TabIndex = 7;
 			this->label3->Text = L"Book Id";
+			this->label3->Click += gcnew System::EventHandler(this, &borrowbook::label3_Click);
 			// 
 			// tbbookid
 			// 
@@ -207,6 +209,7 @@ namespace databaseproject {
 			this->tbbranchid->Name = L"tbbranchid";
 			this->tbbranchid->Size = System::Drawing::Size(453, 40);
 			this->tbbranchid->TabIndex = 15;
+			this->tbbranchid->TextChanged += gcnew System::EventHandler(this, &borrowbook::tbbranchid_TextChanged);
 			// 
 			// llreturn
 			// 
@@ -273,20 +276,7 @@ namespace databaseproject {
 	}
 	public:borrowprocess^ borrowbookk = nullptr;
 	private: System::Void button1_Click(System::Object^ sender, System::EventArgs^ e) {
-		//String^ bookid = tbbookid->Text;
-	//int boookid = Convert::ToInt32(bookid);
-		//String^ branchid = tbbranchid->Text;
-		//int branchhid = Convert::ToInt32(branchid);
-		//int boookid = Decimal::ToInt32(numericUpDown1->Value);
-		// branchhid = Decimal::ToInt32(numericUpDown1->Value);
-
-		//int user_id = userid;
-		/*if (bookid->Length == 0 || branchid->Length == 0)
-		{
-			MessageBox::Show("Please enter all the fields",
-				"One or more empty fields", MessageBoxButtons::OK);
-			return;
-		}*/
+	
 
 		try {
 			int user_id = userid;
@@ -376,5 +366,11 @@ namespace databaseproject {
 	}
 	private: System::Void numericUpDown1_ValueChanged(System::Object^ sender, System::EventArgs^ e) {
 	}
-	};
+	private: System::Void borrowbooklabel_Click(System::Object^ sender, System::EventArgs^ e) {
+	}
+private: System::Void tbbranchid_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+};
 }

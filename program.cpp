@@ -6,6 +6,8 @@
 #include"Book.h"
 #include"borrowprocess.h"
 #include"showallbooks.h"
+#include "returnbook.h"
+#include "returnprocess.h"
 using namespace System;
 using namespace System::Windows::Forms;
 
@@ -18,7 +20,7 @@ void main(array<String^>^ args)
     librarian^ Librarian = nullptr;
     Book^ book = nullptr;
     borrowprocess^ borrowbookk = nullptr;
-    
+    returnprocess^ returnbookk = nullptr;
 
     while (true) {
         databaseproject::loginform loginForm;
@@ -101,6 +103,33 @@ void main(array<String^>^ args)
                     ShowAllBooks.Close();
                     continue;
                 }
+               
+            }
+            if (mainform.switchtoreturnbook)
+            {
+                databaseproject::returnbook ReturnBook(user);
+                Application::Run(% ReturnBook);
+                if (ReturnBook.backtodashboard) {
+                    ReturnBook.Close();
+                    continue;
+                }
+                else {
+                    returnbookk = ReturnBook.returnbookk;
+                }
+                if ((returnbookk != nullptr) && (returnbookk->availability == "not available")&&ReturnBook.userid==user->id) {
+                    MessageBox::Show("Book availability: " + returnbookk->availability, "Book Availability", MessageBoxButtons::OK, MessageBoxIcon::Information);
+                    MessageBox::Show("seccefully return book process ", "program.cpp", MessageBoxButtons::OK);
+                    break;
+                }
+
+
+                else {
+                    MessageBox::Show("Book availability: " + returnbookk->availability, "Book Availability", MessageBoxButtons::OK, MessageBoxIcon::Information);
+
+                    MessageBox::Show("return book failed", "program.cpp", MessageBoxButtons::OK);
+                    break;
+                }
+
             }
         }
 

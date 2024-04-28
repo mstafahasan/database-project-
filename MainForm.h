@@ -23,7 +23,10 @@ namespace databaseproject {
 			//TODO: Add the constructor code here
 			//
 			lbHellouser->Text = "hello " + user->name;
-			borrowlabel->Text = "to borrow a book press on switch to borrow label";
+			borrowlabel->Text = "to borrow a book press on ";
+			showallbooks->Text = "To show all book press on ";
+			returnbook->Text = "To Return your borrowed book press on ";
+
 		}
 
 	protected:
@@ -44,6 +47,9 @@ namespace databaseproject {
 	private: System::Windows::Forms::Label^ borrowlabel;
 	private: System::Windows::Forms::Label^ showallbooks;
 	private: System::Windows::Forms::LinkLabel^ llshow;
+	private: System::Windows::Forms::Label^ returnbook;
+	private: System::Windows::Forms::LinkLabel^ linkLabel1;
+
 
 
 
@@ -69,6 +75,8 @@ namespace databaseproject {
 			this->borrowlabel = (gcnew System::Windows::Forms::Label());
 			this->showallbooks = (gcnew System::Windows::Forms::Label());
 			this->llshow = (gcnew System::Windows::Forms::LinkLabel());
+			this->returnbook = (gcnew System::Windows::Forms::Label());
+			this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -130,23 +138,49 @@ namespace databaseproject {
 			this->showallbooks->Size = System::Drawing::Size(129, 24);
 			this->showallbooks->TabIndex = 4;
 			this->showallbooks->Text = L"showallbooks";
+			this->showallbooks->Click += gcnew System::EventHandler(this, &MainForm::showallbooks_Click);
 			// 
 			// llshow
 			// 
 			this->llshow->AutoSize = true;
 			this->llshow->Location = System::Drawing::Point(509, 171);
 			this->llshow->Name = L"llshow";
-			this->llshow->Size = System::Drawing::Size(325, 36);
+			this->llshow->Size = System::Drawing::Size(339, 36);
 			this->llshow->TabIndex = 5;
 			this->llshow->TabStop = true;
-			this->llshow->Text = L"Swith to show all books";
+			this->llshow->Text = L"Switch to show all books";
 			this->llshow->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::llshow_LinkClicked);
+			// 
+			// returnbook
+			// 
+			this->returnbook->AutoSize = true;
+			this->returnbook->Font = (gcnew System::Drawing::Font(L"Tahoma", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->returnbook->Location = System::Drawing::Point(46, 254);
+			this->returnbook->Name = L"returnbook";
+			this->returnbook->Size = System::Drawing::Size(113, 24);
+			this->returnbook->TabIndex = 6;
+			this->returnbook->Text = L"return label";
+			this->returnbook->Click += gcnew System::EventHandler(this, &MainForm::label2_Click);
+			// 
+			// linkLabel1
+			// 
+			this->linkLabel1->AutoSize = true;
+			this->linkLabel1->Location = System::Drawing::Point(515, 254);
+			this->linkLabel1->Name = L"linkLabel1";
+			this->linkLabel1->Size = System::Drawing::Size(310, 36);
+			this->linkLabel1->TabIndex = 7;
+			this->linkLabel1->TabStop = true;
+			this->linkLabel1->Text = L"Switch to return book ";
+			this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::linkLabel1_LinkClicked);
 			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(17, 36);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1032, 532);
+			this->Controls->Add(this->linkLabel1);
+			this->Controls->Add(this->returnbook);
 			this->Controls->Add(this->llshow);
 			this->Controls->Add(this->showallbooks);
 			this->Controls->Add(this->borrowlabel);
@@ -178,6 +212,16 @@ private: System::Void borrowlabel_Click(System::Object^ sender, System::EventArg
 	   public:bool switch_to_show_all_books=false;
 private: System::Void llshow_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	this->switch_to_show_all_books = true;
+	this->Close();
+}
+private: System::Void label2_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+private: System::Void showallbooks_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+	   public:bool switchtoreturnbook = false;
+
+private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	this->switchtoreturnbook = true;
 	this->Close();
 }
 };

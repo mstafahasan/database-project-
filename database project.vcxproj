@@ -152,6 +152,7 @@
     <ClInclude Include="returnbook.h">
       <FileType>CppForm</FileType>
     </ClInclude>
+    <ClInclude Include="returnprocess.h" />
     <ClInclude Include="showallbooks.h">
       <FileType>CppForm</FileType>
     </ClInclude>

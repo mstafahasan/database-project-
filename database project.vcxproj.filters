@@ -71,5 +71,8 @@
     <ClInclude Include="returnbook.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="returnprocess.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
