@@ -42,6 +42,11 @@ namespace databaseproject {
 	private: System::Windows::Forms::LinkLabel^ llborrowlabel;
 
 	private: System::Windows::Forms::Label^ borrowlabel;
+	private: System::Windows::Forms::Label^ showallbooks;
+	private: System::Windows::Forms::LinkLabel^ llshow;
+
+
+
 	protected:
 
 	private:
@@ -62,6 +67,8 @@ namespace databaseproject {
 			this->lbHellouser = (gcnew System::Windows::Forms::Label());
 			this->llborrowlabel = (gcnew System::Windows::Forms::LinkLabel());
 			this->borrowlabel = (gcnew System::Windows::Forms::Label());
+			this->showallbooks = (gcnew System::Windows::Forms::Label());
+			this->llshow = (gcnew System::Windows::Forms::LinkLabel());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -113,11 +120,35 @@ namespace databaseproject {
 			this->borrowlabel->Text = L"borrowlabel";
 			this->borrowlabel->Click += gcnew System::EventHandler(this, &MainForm::borrowlabel_Click);
 			// 
+			// showallbooks
+			// 
+			this->showallbooks->AutoSize = true;
+			this->showallbooks->Font = (gcnew System::Drawing::Font(L"Tahoma", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->showallbooks->Location = System::Drawing::Point(42, 181);
+			this->showallbooks->Name = L"showallbooks";
+			this->showallbooks->Size = System::Drawing::Size(129, 24);
+			this->showallbooks->TabIndex = 4;
+			this->showallbooks->Text = L"showallbooks";
+			// 
+			// llshow
+			// 
+			this->llshow->AutoSize = true;
+			this->llshow->Location = System::Drawing::Point(509, 171);
+			this->llshow->Name = L"llshow";
+			this->llshow->Size = System::Drawing::Size(325, 36);
+			this->llshow->TabIndex = 5;
+			this->llshow->TabStop = true;
+			this->llshow->Text = L"Swith to show all books";
+			this->llshow->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::llshow_LinkClicked);
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(17, 36);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1032, 532);
+			this->Controls->Add(this->llshow);
+			this->Controls->Add(this->showallbooks);
 			this->Controls->Add(this->borrowlabel);
 			this->Controls->Add(this->llborrowlabel);
 			this->Controls->Add(this->lbHellouser);
@@ -143,6 +174,11 @@ namespace databaseproject {
 		this->Close();
 	}
 private: System::Void borrowlabel_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+	   public:bool switch_to_show_all_books=false;
+private: System::Void llshow_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	this->switch_to_show_all_books = true;
+	this->Close();
 }
 };
 }

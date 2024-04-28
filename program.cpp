@@ -5,6 +5,7 @@
 #include"borrowbook.h"
 #include"Book.h"
 #include"borrowprocess.h"
+#include"showallbooks.h"
 using namespace System;
 using namespace System::Windows::Forms;
 
@@ -73,6 +74,7 @@ void main(array<String^>^ args)
                     BorrowBook.Close();
                     continue;
                 }
+
                 else {
                     borrowbookk = BorrowBook.borrowbookk;
                 }
@@ -88,7 +90,15 @@ void main(array<String^>^ args)
                     break;
                 }
             }
-
+            if(mainform.switch_to_show_all_books){
+                databaseproject::showallbooks ShowAllBooks;
+                Application::Run(% ShowAllBooks);
+                if (ShowAllBooks.switchtodashboard)
+                {
+                    ShowAllBooks.Close();
+                    continue;
+                }
+            }
         }
 
         else {
