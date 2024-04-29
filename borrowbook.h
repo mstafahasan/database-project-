@@ -78,6 +78,7 @@ namespace databaseproject {
 
 
 
+
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -435,5 +436,6 @@ private: System::Void tbbranchid_TextChanged(System::Object^ sender, System::Eve
 }
 private: System::Void label3_Click(System::Object^ sender, System::EventArgs^ e) {
 }
+	
 };
 }

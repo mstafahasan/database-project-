@@ -68,7 +68,18 @@ void main(array<String^>^ args)
 
         databaseproject::MainForm mainform(user);
         Application::Run(% mainform);
+        if (mainform.switchtologinn)
+        {
+            databaseproject::loginform loginForm;
+            loginForm.ShowDialog();
+            user = loginForm.user;
 
+            if (user != nullptr)
+                continue;
+            else
+                break;
+           
+        }
         if (mainform.switch_to_borrow_label) {
             databaseproject::borrowbook BorrowBook(user);
             Application::Run(% BorrowBook);

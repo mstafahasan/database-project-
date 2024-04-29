@@ -109,6 +109,7 @@ Class databaseproject.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFiel
     Boolean switchtoreturnbook : Public
     Boolean switch_to_show_borrowed_books : Public
     Boolean switchfromdashboardtobills : Public
+    Boolean switchtologinn : Public
 Class databaseproject.RegisterForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

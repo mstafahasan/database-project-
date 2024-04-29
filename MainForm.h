@@ -53,6 +53,7 @@ namespace databaseproject {
 	private: System::Windows::Forms::LinkLabel^ linkLabel2;
 	private: System::Windows::Forms::Label^ labelbills;
 	private: System::Windows::Forms::LinkLabel^ linkLabel3;
+	private: System::Windows::Forms::LinkLabel^ linkLabel4;
 
 
 
@@ -85,6 +86,7 @@ namespace databaseproject {
 			this->linkLabel2 = (gcnew System::Windows::Forms::LinkLabel());
 			this->labelbills = (gcnew System::Windows::Forms::Label());
 			this->linkLabel3 = (gcnew System::Windows::Forms::LinkLabel());
+			this->linkLabel4 = (gcnew System::Windows::Forms::LinkLabel());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -232,12 +234,25 @@ namespace databaseproject {
 			this->linkLabel3->Text = L"Switch To Show you bills";
 			this->linkLabel3->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::linkLabel3_LinkClicked);
 			// 
+			// linkLabel4
+			// 
+			this->linkLabel4->AutoSize = true;
+			this->linkLabel4->LinkColor = System::Drawing::Color::Black;
+			this->linkLabel4->Location = System::Drawing::Point(865, 468);
+			this->linkLabel4->Name = L"linkLabel4";
+			this->linkLabel4->Size = System::Drawing::Size(120, 36);
+			this->linkLabel4->TabIndex = 12;
+			this->linkLabel4->TabStop = true;
+			this->linkLabel4->Text = L"Log Out";
+			this->linkLabel4->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::linkLabel4_LinkClicked);
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(17, 36);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(1032, 532);
+			this->Controls->Add(this->linkLabel4);
 			this->Controls->Add(this->linkLabel3);
 			this->Controls->Add(this->labelbills);
 			this->Controls->Add(this->linkLabel2);
@@ -300,6 +315,12 @@ private: System::Void labelbills_Click(System::Object^ sender, System::EventArgs
 	   public:bool switchfromdashboardtobills = false;
 private: System::Void linkLabel3_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	this->switchfromdashboardtobills=true;
+	this->Close();
+}
+		   public:bool switchtologinn = false;
+
+private: System::Void linkLabel4_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	this->switchtologinn = true;
 	this->Close();
 }
 };
