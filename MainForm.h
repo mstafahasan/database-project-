@@ -26,7 +26,7 @@ namespace databaseproject {
 			borrowlabel->Text = "to borrow a book press on ";
 			showallbooks->Text = "To show all book press on ";
 			returnbook->Text = "To Return your borrowed book press on ";
-
+			labelbills->Text="To Show Your bills Press On ";
 		}
 
 	protected:
@@ -51,6 +51,8 @@ namespace databaseproject {
 	private: System::Windows::Forms::LinkLabel^ linkLabel1;
 	private: System::Windows::Forms::Label^ label2;
 	private: System::Windows::Forms::LinkLabel^ linkLabel2;
+	private: System::Windows::Forms::Label^ labelbills;
+	private: System::Windows::Forms::LinkLabel^ linkLabel3;
 
 
 
@@ -81,6 +83,8 @@ namespace databaseproject {
 			this->linkLabel1 = (gcnew System::Windows::Forms::LinkLabel());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->linkLabel2 = (gcnew System::Windows::Forms::LinkLabel());
+			this->labelbills = (gcnew System::Windows::Forms::Label());
+			this->linkLabel3 = (gcnew System::Windows::Forms::LinkLabel());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -200,11 +204,36 @@ namespace databaseproject {
 			this->linkLabel2->Text = L"Switch to Show All Borrow Book";
 			this->linkLabel2->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::linkLabel2_LinkClicked);
 			// 
+			// labelbills
+			// 
+			this->labelbills->AutoSize = true;
+			this->labelbills->Font = (gcnew System::Drawing::Font(L"Tahoma", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->labelbills->Location = System::Drawing::Point(50, 390);
+			this->labelbills->Name = L"labelbills";
+			this->labelbills->Size = System::Drawing::Size(130, 24);
+			this->labelbills->TabIndex = 10;
+			this->labelbills->Text = L"show all bills ";
+			this->labelbills->Click += gcnew System::EventHandler(this, &MainForm::labelbills_Click);
+			// 
+			// linkLabel3
+			// 
+			this->linkLabel3->AutoSize = true;
+			this->linkLabel3->Location = System::Drawing::Point(527, 409);
+			this->linkLabel3->Name = L"linkLabel3";
+			this->linkLabel3->Size = System::Drawing::Size(343, 36);
+			this->linkLabel3->TabIndex = 11;
+			this->linkLabel3->TabStop = true;
+			this->linkLabel3->Text = L"Switch To Show you bills";
+			this->linkLabel3->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &MainForm::linkLabel3_LinkClicked);
+			// 
 			// MainForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(17, 36);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1032, 532);
+			this->Controls->Add(this->linkLabel3);
+			this->Controls->Add(this->labelbills);
 			this->Controls->Add(this->linkLabel2);
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->linkLabel1);
@@ -255,9 +284,16 @@ private: System::Void linkLabel1_LinkClicked(System::Object^ sender, System::Win
 }
 private: System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e) {
 }
-	  public:bool switch_to_show_borrowed_books = true;
+	  public:bool switch_to_show_borrowed_books = false;
 private: System::Void linkLabel2_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
 	this->switch_to_show_borrowed_books = true;
+	this->Close();
+}
+private: System::Void labelbills_Click(System::Object^ sender, System::EventArgs^ e) {
+}
+	   public:bool switchfromdashboardtobills = false;
+private: System::Void linkLabel3_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {
+	this->switchfromdashboardtobills=true;
 	this->Close();
 }
 };

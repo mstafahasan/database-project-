@@ -9,3 +9,4 @@ D:\vscode\database project\x64\Debug\databaseproject.borrowbook.resources
 D:\vscode\database project\x64\Debug\databaseproject.showallbooks.resources
 D:\vscode\database project\x64\Debug\databaseproject.returnbook.resources
 D:\vscode\database project\x64\Debug\databaseproject.show_borrow_books.resources
+D:\vscode\database project\x64\Debug\databaseproject.billwindow.resources

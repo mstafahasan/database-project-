@@ -167,12 +167,7 @@ namespace databaseproject {
 			// Handle any SQL exceptions
 			MessageBox::Show("SQL Error: " + ex->Message, "Database Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 		}
-		finally {
-			// Close the connection
-			if (conn->State == ConnectionState::Open) {
-				conn->Close();
-			}
-		}
+	
 	}
 };
 }

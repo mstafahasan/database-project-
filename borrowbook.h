@@ -67,6 +67,10 @@ namespace databaseproject {
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip1;
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip2;
 	private: System::Windows::Forms::ContextMenuStrip^ contextMenuStrip3;
+	private: System::Windows::Forms::DateTimePicker^ dateTimePicker1;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Label^ label5;
+	private: System::Windows::Forms::DateTimePicker^ dateTimePicker2;
 
 
 
@@ -108,6 +112,10 @@ namespace databaseproject {
 			this->contextMenuStrip1 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->contextMenuStrip2 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
 			this->contextMenuStrip3 = (gcnew System::Windows::Forms::ContextMenuStrip(this->components));
+			this->dateTimePicker1 = (gcnew System::Windows::Forms::DateTimePicker());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->label5 = (gcnew System::Windows::Forms::Label());
+			this->dateTimePicker2 = (gcnew System::Windows::Forms::DateTimePicker());
 			this->SuspendLayout();
 			// 
 			// label1
@@ -169,7 +177,7 @@ namespace databaseproject {
 			// 
 			this->button1->Font = (gcnew System::Drawing::Font(L"Tahoma", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(310, 249);
+			this->button1->Location = System::Drawing::Point(310, 371);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(124, 49);
 			this->button1->TabIndex = 11;
@@ -181,7 +189,7 @@ namespace databaseproject {
 			// 
 			this->button2->Font = (gcnew System::Drawing::Font(L"Tahoma", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button2->Location = System::Drawing::Point(491, 249);
+			this->button2->Location = System::Drawing::Point(494, 371);
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(124, 49);
 			this->button2->TabIndex = 12;
@@ -218,7 +226,7 @@ namespace databaseproject {
 			this->llreturn->Font = (gcnew System::Drawing::Font(L"Tahoma", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->llreturn->LinkColor = System::Drawing::Color::Black;
-			this->llreturn->Location = System::Drawing::Point(694, 274);
+			this->llreturn->Location = System::Drawing::Point(694, 396);
 			this->llreturn->Name = L"llreturn";
 			this->llreturn->Size = System::Drawing::Size(69, 24);
 			this->llreturn->TabIndex = 17;
@@ -244,11 +252,55 @@ namespace databaseproject {
 			this->contextMenuStrip3->Name = L"contextMenuStrip3";
 			this->contextMenuStrip3->Size = System::Drawing::Size(61, 4);
 			// 
+			// dateTimePicker1
+			// 
+			this->dateTimePicker1->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->dateTimePicker1->Location = System::Drawing::Point(310, 239);
+			this->dateTimePicker1->Name = L"dateTimePicker1";
+			this->dateTimePicker1->Size = System::Drawing::Size(460, 40);
+			this->dateTimePicker1->TabIndex = 18;
+			// 
+			// label4
+			// 
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(92, 239);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(164, 34);
+			this->label4->TabIndex = 19;
+			this->label4->Text = L"borrow date";
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label5->Location = System::Drawing::Point(98, 313);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(161, 34);
+			this->label5->TabIndex = 20;
+			this->label5->Text = L"Return date";
+			// 
+			// dateTimePicker2
+			// 
+			this->dateTimePicker2->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->dateTimePicker2->Location = System::Drawing::Point(310, 313);
+			this->dateTimePicker2->Name = L"dateTimePicker2";
+			this->dateTimePicker2->Size = System::Drawing::Size(460, 40);
+			this->dateTimePicker2->TabIndex = 21;
+			// 
 			// borrowbook
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(7, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(940, 597);
+			this->Controls->Add(this->dateTimePicker2);
+			this->Controls->Add(this->label5);
+			this->Controls->Add(this->label4);
+			this->Controls->Add(this->dateTimePicker1);
 			this->Controls->Add(this->llreturn);
 			this->Controls->Add(this->tbbranchid);
 			this->Controls->Add(this->id);
@@ -279,11 +331,15 @@ namespace databaseproject {
 	
 
 		try {
+			// Get the borrow date and return date from the DateTimePicker controls
+			DateTime borrow_datee = dateTimePicker1->Value;
+			DateTime return_datee = dateTimePicker2->Value;
 			int user_id = userid;
 			String^ bookid = tbbookid->Text;
 			int boookid;
 			String^ availabilityyResult;
 
+			// Convert book ID to integer
 			if (!Int32::TryParse(bookid, boookid)) {
 				MessageBox::Show("Please enter a valid book ID.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				return; // Exit the function or return an error code
@@ -292,6 +348,7 @@ namespace databaseproject {
 			String^ branchid = tbbranchid->Text;
 			int branchhid;
 
+			// Convert branch ID to integer
 			if (!Int32::TryParse(branchid, branchhid)) {
 				MessageBox::Show("Please enter a valid branch ID.", "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 				return; // Exit the function or return an error code
@@ -305,13 +362,17 @@ namespace databaseproject {
 			sqlconn->Open();
 
 			// Define the SQL query to execute the stored procedure
-			String^ sqlQuery = "EXEC BorrowBookProcedure @book_id, @user_id, @branch_id, @Availability OUTPUT;";
+			String^ sqlQuery = "EXEC BorrowBookProcedure @book_id, @user_id, @branch_id, @borrow_date, @return_date, @Availability OUTPUT;";
 			SqlCommand^ command = gcnew SqlCommand(sqlQuery, sqlconn);
 
 			// Add parameters
 			command->Parameters->AddWithValue("@book_id", boookid);
 			command->Parameters->AddWithValue("@user_id", user_id);
 			command->Parameters->AddWithValue("@branch_id", branchhid);
+
+			// Add borrow and return dates as parameters
+			command->Parameters->AddWithValue("@borrow_date", borrow_datee);
+			command->Parameters->AddWithValue("@return_date", return_datee);
 
 			// Define a parameter to capture the output availability
 			SqlParameter^ availabilityParam = gcnew SqlParameter("@Availability", SqlDbType::VarChar, 50);
@@ -329,8 +390,8 @@ namespace databaseproject {
 			borrowbookk->bookid = boookid;
 			borrowbookk->branch_id = branchhid;
 			borrowbookk->user_id = user_id;
-			borrowbookk->return_date = "2000-06-07"; // Modify this if needed
-			borrowbookk->borrow_date = "1999-05-08"; // Modify this if needed
+			borrowbookk->borrow_date = borrow_datee.ToString("yyyy-MM-dd"); // Convert to desired format
+			borrowbookk->return_date = return_datee.ToString("yyyy-MM-dd"); // Convert to desired format
 
 			// Set borrowbookk->availability based on the availabilityResult
 			if (availabilityyResult == "available") {

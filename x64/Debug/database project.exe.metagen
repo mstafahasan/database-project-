@@ -1,3 +1,4 @@
+  databaseproject.billwindow.resources - Embedded, ContainedInManifestFile, 
   databaseproject.borrowbook.resources - Embedded, ContainedInManifestFile, 
   databaseproject.loginform.resources - Embedded, ContainedInManifestFile, 
   databaseproject.LoginLibrarianForm.resources - Embedded, ContainedInManifestFile, 
@@ -21,6 +22,13 @@ Assembly System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=
 	hash=None, flags=None
 Assembly System.Xml, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089: 
 	hash=None, flags=None
+Class bill: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+    Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 bill_id : Public
+    Int32 book_id : Public
+    Int32 user_id : Public
+    Double bill_amount : Public
 Class User: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
   Fields:
@@ -30,6 +38,12 @@ Class User: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
     System.String phone : Public
     System.String address : Public
     System.String password : Public
+Class databaseproject.billwindow: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
+  :System.Windows.Forms.Form
+    Void .ctor(User): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
+  Fields:
+    Int32 userid : Public
+    Boolean switchfromBilltodashboard : Public
 Class databaseproject.loginform: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName
@@ -94,6 +108,7 @@ Class databaseproject.MainForm: AutoLayout, AnsiClass, Class, Public, BeforeFiel
     Boolean switch_to_show_all_books : Public
     Boolean switchtoreturnbook : Public
     Boolean switch_to_show_borrowed_books : Public
+    Boolean switchfromdashboardtobills : Public
 Class databaseproject.RegisterForm: AutoLayout, AnsiClass, Class, Public, BeforeFieldInit
   :System.Windows.Forms.Form
     Void .ctor(): PrivateScope, Public, HideBySig, SpecialName, RTSpecialName

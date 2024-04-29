@@ -122,6 +122,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="billwindow.cpp" />
     <ClCompile Include="borrowbook.cpp" />
     <ClCompile Include="loginform.cpp" />
     <ClCompile Include="LoginLibrarianForm.cpp" />
@@ -133,6 +134,10 @@
     <ClCompile Include="show_borrow_books.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="bill.h" />
+    <ClInclude Include="billwindow.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="borrowbook.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -163,6 +168,9 @@
     <ClInclude Include="User.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="billwindow.resx">
+      <DependentUpon>billwindow.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="borrowbook.resx">
       <DependentUpon>borrowbook.h</DependentUpon>
     </EmbeddedResource>

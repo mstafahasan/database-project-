@@ -42,6 +42,9 @@
     <ClCompile Include="show_borrow_books.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="billwindow.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="loginform.h">
@@ -78,6 +81,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="show_borrow_books.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="bill.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="billwindow.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
