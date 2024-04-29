@@ -77,14 +77,15 @@ namespace databaseproject {
 			// linkLabel1
 			// 
 			this->linkLabel1->AutoSize = true;
-			this->linkLabel1->Font = (gcnew System::Drawing::Font(L"Tahoma", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->linkLabel1->Font = (gcnew System::Drawing::Font(L"Tahoma", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->linkLabel1->LinkColor = System::Drawing::Color::Black;
 			this->linkLabel1->Location = System::Drawing::Point(389, 630);
 			this->linkLabel1->Name = L"linkLabel1";
-			this->linkLabel1->Size = System::Drawing::Size(74, 28);
+			this->linkLabel1->Size = System::Drawing::Size(105, 36);
 			this->linkLabel1->TabIndex = 1;
 			this->linkLabel1->TabStop = true;
-			this->linkLabel1->Text = L"return";
+			this->linkLabel1->Text = L"Return";
 			this->linkLabel1->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &billwindow::linkLabel1_LinkClicked);
 			// 
 			// billgridview
@@ -101,6 +102,7 @@ namespace databaseproject {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(7, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(870, 702);
 			this->Controls->Add(this->billgridview);
 			this->Controls->Add(this->linkLabel1);

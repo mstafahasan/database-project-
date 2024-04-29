@@ -68,6 +68,7 @@ namespace databaseproject {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(returnbook::typeid));
 			this->llback = (gcnew System::Windows::Forms::LinkLabel());
 			this->tbbranchid = (gcnew System::Windows::Forms::TextBox());
 			this->id = (gcnew System::Windows::Forms::Label());
@@ -83,6 +84,7 @@ namespace databaseproject {
 			this->llback->AutoSize = true;
 			this->llback->Font = (gcnew System::Drawing::Font(L"Tahoma", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->llback->LinkColor = System::Drawing::Color::Black;
 			this->llback->Location = System::Drawing::Point(684, 287);
 			this->llback->Name = L"llback";
 			this->llback->Size = System::Drawing::Size(84, 40);
@@ -171,6 +173,8 @@ namespace databaseproject {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(7, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->ClientSize = System::Drawing::Size(934, 462);
 			this->Controls->Add(this->labelreturn);
 			this->Controls->Add(this->tbbranchid);
@@ -180,6 +184,7 @@ namespace databaseproject {
 			this->Controls->Add(this->tbbookid);
 			this->Controls->Add(this->label3);
 			this->Controls->Add(this->llback);
+			this->DoubleBuffered = true;
 			this->Name = L"returnbook";
 			this->Text = L"returnbook";
 			this->Load += gcnew System::EventHandler(this, &returnbook::returnbook_Load);

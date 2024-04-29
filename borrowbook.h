@@ -99,6 +99,7 @@ namespace databaseproject {
 		void InitializeComponent(void)
 		{
 			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(borrowbook::typeid));
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->borrowbooklabel = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
@@ -133,7 +134,7 @@ namespace databaseproject {
 			this->borrowbooklabel->AutoSize = true;
 			this->borrowbooklabel->Font = (gcnew System::Drawing::Font(L"Tahoma", 18, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->borrowbooklabel->Location = System::Drawing::Point(317, 51);
+			this->borrowbooklabel->Location = System::Drawing::Point(397, 34);
 			this->borrowbooklabel->Name = L"borrowbooklabel";
 			this->borrowbooklabel->Size = System::Drawing::Size(94, 36);
 			this->borrowbooklabel->TabIndex = 1;
@@ -296,6 +297,7 @@ namespace databaseproject {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(7, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(940, 597);
 			this->Controls->Add(this->dateTimePicker2);
 			this->Controls->Add(this->label5);

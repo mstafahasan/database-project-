@@ -87,20 +87,22 @@ namespace databaseproject {
 			// lllogin
 			// 
 			this->lllogin->AutoSize = true;
-			this->lllogin->Font = (gcnew System::Drawing::Font(L"Tahoma", 16.2F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->lllogin->Font = (gcnew System::Drawing::Font(L"Tahoma", 19.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
+			this->lllogin->LinkColor = System::Drawing::Color::Black;
 			this->lllogin->Location = System::Drawing::Point(449, 678);
 			this->lllogin->Name = L"lllogin";
-			this->lllogin->Size = System::Drawing::Size(91, 34);
+			this->lllogin->Size = System::Drawing::Size(118, 41);
 			this->lllogin->TabIndex = 2;
 			this->lllogin->TabStop = true;
-			this->lllogin->Text = L"return";
+			this->lllogin->Text = L"Return";
 			this->lllogin->LinkClicked += gcnew System::Windows::Forms::LinkLabelLinkClickedEventHandler(this, &show_borrow_books::lllogin_LinkClicked);
 			// 
 			// show_borrow_books
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(7, 16);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::SystemColors::ActiveCaption;
 			this->ClientSize = System::Drawing::Size(1014, 736);
 			this->Controls->Add(this->lllogin);
 			this->Controls->Add(this->dataGridView1);

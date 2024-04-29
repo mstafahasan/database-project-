@@ -92,10 +92,10 @@ namespace databaseproject {
 			this->label1->Anchor = static_cast<System::Windows::Forms::AnchorStyles>(((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->label1->ImageAlign = System::Drawing::ContentAlignment::MiddleRight;
-			this->label1->Location = System::Drawing::Point(145, -18);
+			this->label1->Location = System::Drawing::Point(342, 9);
 			this->label1->Margin = System::Windows::Forms::Padding(7, 0, 7, 0);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(681, 115);
+			this->label1->Size = System::Drawing::Size(316, 59);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"welcome to our library";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -116,6 +116,7 @@ namespace databaseproject {
 			// llborrowlabel
 			// 
 			this->llborrowlabel->AutoSize = true;
+			this->llborrowlabel->LinkColor = System::Drawing::Color::Black;
 			this->llborrowlabel->Location = System::Drawing::Point(509, 105);
 			this->llborrowlabel->Name = L"llborrowlabel";
 			this->llborrowlabel->Size = System::Drawing::Size(307, 36);
@@ -151,6 +152,7 @@ namespace databaseproject {
 			// llshow
 			// 
 			this->llshow->AutoSize = true;
+			this->llshow->LinkColor = System::Drawing::Color::Black;
 			this->llshow->Location = System::Drawing::Point(509, 171);
 			this->llshow->Name = L"llshow";
 			this->llshow->Size = System::Drawing::Size(339, 36);
@@ -174,6 +176,7 @@ namespace databaseproject {
 			// linkLabel1
 			// 
 			this->linkLabel1->AutoSize = true;
+			this->linkLabel1->LinkColor = System::Drawing::Color::Black;
 			this->linkLabel1->Location = System::Drawing::Point(515, 254);
 			this->linkLabel1->Name = L"linkLabel1";
 			this->linkLabel1->Size = System::Drawing::Size(310, 36);
@@ -196,6 +199,7 @@ namespace databaseproject {
 			// linkLabel2
 			// 
 			this->linkLabel2->AutoSize = true;
+			this->linkLabel2->LinkColor = System::Drawing::Color::Black;
 			this->linkLabel2->Location = System::Drawing::Point(521, 328);
 			this->linkLabel2->Name = L"linkLabel2";
 			this->linkLabel2->Size = System::Drawing::Size(436, 36);
@@ -219,6 +223,7 @@ namespace databaseproject {
 			// linkLabel3
 			// 
 			this->linkLabel3->AutoSize = true;
+			this->linkLabel3->LinkColor = System::Drawing::Color::Black;
 			this->linkLabel3->Location = System::Drawing::Point(527, 409);
 			this->linkLabel3->Name = L"linkLabel3";
 			this->linkLabel3->Size = System::Drawing::Size(343, 36);
@@ -231,6 +236,7 @@ namespace databaseproject {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(17, 36);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
 			this->ClientSize = System::Drawing::Size(1032, 532);
 			this->Controls->Add(this->linkLabel3);
 			this->Controls->Add(this->labelbills);
