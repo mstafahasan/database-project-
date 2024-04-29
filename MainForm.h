@@ -108,7 +108,7 @@ namespace databaseproject {
 			this->lbHellouser->AutoSize = true;
 			this->lbHellouser->Font = (gcnew System::Drawing::Font(L"Tahoma", 13.8F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->lbHellouser->Location = System::Drawing::Point(41, 61);
+			this->lbHellouser->Location = System::Drawing::Point(45, 27);
 			this->lbHellouser->Name = L"lbHellouser";
 			this->lbHellouser->Size = System::Drawing::Size(72, 28);
 			this->lbHellouser->TabIndex = 1;
